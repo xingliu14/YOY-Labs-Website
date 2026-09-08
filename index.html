@@ -4,115 +4,100 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YOY Labs — Coming Soon</title>
-<meta name="description" content="YOY Labs is coming soon. A technology lab building intelligent systems, software, and experiments at the edge of what's possible.">
+<meta name="description" content="YOY Labs is coming soon. A technology lab building intelligent systems.">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:title" content="YOY Labs — Coming Soon">
-<meta property="og:description" content="A technology lab building intelligent systems, year over year. Launching soon.">
+<meta property="og:description" content="A technology lab building intelligent systems. Launching soon.">
 <meta property="og:url" content="https://xingliu14.github.io/YOY-Labs-Website/">
-<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff375f'/%3E%3Cstop offset='1' stop-color='%230a84ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-family='-apple-system,Helvetica,Arial,sans-serif' font-size='36' font-weight='700' text-anchor='middle' fill='white'%3EY%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #000000;
-    --card: #1d1d1f;
-    --card-hover: #242427;
+    --bg: #000;
     --text: #f5f5f7;
     --text-2: #a1a1a6;
     --gray: #86868b;
-    --line: rgba(255, 255, 255, 0.10);
+    --line: rgba(255, 255, 255, 0.1);
     --blue: #2997ff;
     --btn: #0071e3;
     --btn-hover: #0a7aeb;
     --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
     --ease: cubic-bezier(0.28, 0.11, 0.32, 1);
     --nav-h: 52px;
-    --content: 1024px;
-    --gutter: 22px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     background: var(--bg); color: var(--text); font-family: var(--font);
     font-size: 17px; line-height: 1.47; letter-spacing: -0.022em;
     -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden; min-height: 100vh;
+    min-height: 100vh; overflow-x: hidden;
   }
   ::selection { background: rgba(41, 151, 255, 0.35); }
   a { color: inherit; text-decoration: none; }
   button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; letter-spacing: inherit; }
   :focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; border-radius: 8px; }
-  h1, h2, h3 { font-weight: 700; letter-spacing: -0.03em; }
 
-  .wrap { width: 100%; max-width: var(--content); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
-
-  /* ---------- nav ---------- */
+  /* nav */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 10; height: var(--nav-h);
     background: rgba(0, 0, 0, 0.72);
     backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-  .brand { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); white-space: nowrap; }
-  .nav-links { display: flex; gap: 34px; align-items: center; }
-  .nav-links [role="tab"] {
-    font-size: 13px; letter-spacing: -0.01em; color: rgba(255, 255, 255, 0.62);
-    padding: 6px 0; position: relative; white-space: nowrap; transition: color 0.25s var(--ease);
-  }
-  .nav-links [role="tab"]::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-    background: #fff; transform: scaleX(0); transform-origin: center; transition: transform 0.35s var(--ease);
-  }
-  .nav-links [role="tab"]:hover { color: #fff; }
-  .nav-links [role="tab"][aria-selected="true"] { color: #fff; }
-  .nav-links [role="tab"][aria-selected="true"]::after { transform: scaleX(1); }
-  .nav-cta {
-    font-size: 12px; font-weight: 500; padding: 7px 15px; border-radius: 980px;
-    background: var(--btn); color: #fff; white-space: nowrap; transition: background 0.25s;
-  }
-  .nav-cta:hover { background: var(--btn-hover); }
+  .nav-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+  .tabs { display: flex; gap: 34px; }
+  .tabs [role="tab"] { font-size: 13px; letter-spacing: -0.01em; color: rgba(255, 255, 255, 0.62); padding: 6px 0; position: relative; white-space: nowrap; transition: color 0.25s var(--ease); }
+  .tabs [role="tab"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: #fff; transform: scaleX(0); transition: transform 0.35s var(--ease); }
+  .tabs [role="tab"]:hover, .tabs [role="tab"][aria-selected="true"] { color: #fff; }
+  .tabs [role="tab"][aria-selected="true"]::after { transform: scaleX(1); }
 
-  /* ---------- panels + motion ---------- */
+  /* panels: one centered screen each */
   main { padding-top: var(--nav-h); }
   .panel { display: none; }
-  .panel.active { display: block; }
-  .active .reveal { opacity: 0; transform: translateY(22px); animation: rise 0.9s var(--ease) forwards; }
-  .active .reveal:nth-child(1) { animation-delay: 0.05s; }
-  .active .reveal:nth-child(2) { animation-delay: 0.13s; }
-  .active .reveal:nth-child(3) { animation-delay: 0.21s; }
-  .active .reveal:nth-child(4) { animation-delay: 0.29s; }
-  .active .reveal:nth-child(5) { animation-delay: 0.37s; }
-  .active .reveal:nth-child(6) { animation-delay: 0.45s; }
-  .active .reveal:nth-child(7) { animation-delay: 0.53s; }
+  .panel.active { display: flex; }
+  .panel {
+    min-height: calc(100vh - var(--nav-h)); align-items: center; justify-content: center; text-align: center;
+    padding: 80px 22px; position: relative; overflow: hidden;
+  }
+  .content { position: relative; max-width: 820px; width: 100%; }
+  .active .content > * { opacity: 0; transform: translateY(20px); animation: rise 0.9s var(--ease) forwards; }
+  .active .content > :nth-child(2) { animation-delay: 0.1s; }
+  .active .content > :nth-child(3) { animation-delay: 0.2s; }
+  .active .content > :nth-child(4) { animation-delay: 0.3s; }
   @keyframes rise { to { opacity: 1; transform: none; } }
 
-  /* ---------- hero ---------- */
-  .hero { position: relative; text-align: center; padding-top: 150px; padding-bottom: 130px; overflow: hidden; }
   .glow {
-    position: absolute; left: 50%; top: 38%; width: 1100px; height: 700px; z-index: 0;
-    transform: translate(-50%, -50%); pointer-events: none;
+    position: absolute; left: 50%; top: 50%; width: 1100px; height: 700px; pointer-events: none;
+    transform: translate(-50%, -50%);
     background:
-      radial-gradient(closest-side, rgba(191, 90, 242, 0.34), transparent 100%),
-      radial-gradient(closest-side at 35% 60%, rgba(255, 55, 95, 0.18), transparent 100%),
-      radial-gradient(closest-side at 70% 45%, rgba(10, 132, 255, 0.22), transparent 100%);
+      radial-gradient(closest-side, rgba(191, 90, 242, 0.32), transparent),
+      radial-gradient(closest-side at 35% 60%, rgba(255, 55, 95, 0.16), transparent),
+      radial-gradient(closest-side at 70% 45%, rgba(10, 132, 255, 0.2), transparent);
     filter: blur(70px);
     animation: breathe 10s var(--ease) infinite alternate;
   }
   @keyframes breathe { from { opacity: 0.75; transform: translate(-50%, -50%) scale(0.96); } to { opacity: 1; transform: translate(-50%, -52%) scale(1.04); } }
-  .hero > .wrap { position: relative; z-index: 1; }
-  h1 { font-size: clamp(52px, 9.5vw, 104px); line-height: 1.02; letter-spacing: -0.035em; max-width: 12ch; margin: 0 auto; }
+
+  /* type */
+  h1, h2 { font-weight: 700; letter-spacing: -0.035em; line-height: 1.02; }
+  h1 { font-size: clamp(52px, 9.5vw, 104px); }
+  h2 { font-size: clamp(44px, 7vw, 80px); }
   .grad {
     background: linear-gradient(92deg, #ff9f0a 0%, #ff375f 32%, #bf5af2 66%, #0a84ff 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    padding-bottom: 0.08em; /* keep descenders inside the clip box */
+    -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: 0.08em;
   }
-  .lede { font-size: clamp(19px, 2.4vw, 28px); line-height: 1.25; letter-spacing: -0.02em; color: var(--text-2); max-width: 640px; margin: 28px auto 44px; font-weight: 400; }
+  .lede { font-size: clamp(19px, 2.4vw, 28px); line-height: 1.25; letter-spacing: -0.02em; color: var(--text-2); max-width: 600px; margin: 24px auto 0; }
+  .list { list-style: none; margin-top: 40px; font-size: clamp(22px, 3vw, 32px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.7; color: var(--text); }
+  .link { display: inline-block; margin-top: 40px; font-size: clamp(20px, 2.6vw, 30px); font-weight: 500; letter-spacing: -0.025em; color: var(--blue); }
+  .link:hover { text-decoration: underline; }
 
-  .waitlist { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 560px; margin: 0 auto; }
+  /* form */
+  .waitlist { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; max-width: 560px; margin: 44px auto 0; }
   .waitlist input {
     flex: 1 1 280px; height: 54px; padding: 0 24px; border-radius: 980px; min-width: 0;
     background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14);
@@ -122,428 +107,108 @@
   .waitlist input::placeholder { color: var(--gray); }
   .waitlist input:focus { outline: none; border-color: rgba(41, 151, 255, 0.8); background: rgba(255, 255, 255, 0.08); box-shadow: 0 0 0 4px rgba(41, 151, 255, 0.18); }
   .btn {
-    display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 30px;
-    border-radius: 980px; background: var(--btn); color: #fff; font-size: 17px; font-weight: 500;
-    letter-spacing: -0.01em; white-space: nowrap; transition: background 0.25s, transform 0.4s var(--ease);
+    height: 54px; padding: 0 30px; border-radius: 980px; background: var(--btn); color: #fff;
+    font-size: 17px; font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; transition: background 0.25s, transform 0.4s var(--ease);
   }
   .btn:hover { background: var(--btn-hover); }
   .btn:active { transform: scale(0.98); }
-  .btn.secondary { background: rgba(255, 255, 255, 0.1); }
-  .btn.secondary:hover { background: rgba(255, 255, 255, 0.16); }
-  .form-note { flex-basis: 100%; text-align: center; font-size: 13px; color: var(--gray); margin-top: 4px; min-height: 1.4em; letter-spacing: -0.01em; }
+  .form-note { flex-basis: 100%; font-size: 13px; color: var(--gray); margin-top: 4px; min-height: 1.4em; }
   .form-note.ok { color: #30d158; }
   .form-note.err { color: #ff453a; }
-  .hero-links { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-  .link { color: var(--blue); font-size: 17px; letter-spacing: -0.01em; transition: opacity 0.2s; }
-  .link::after { content: "\00a0›"; }
-  .link:hover { text-decoration: underline; }
 
-  /* ---------- statement band ---------- */
-  .statement { text-align: center; padding-top: 40px; padding-bottom: 120px; }
-  .statement p:first-child { font-size: clamp(30px, 4.6vw, 56px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; max-width: 18ch; margin: 0 auto; }
-  .statement p:last-child { font-size: clamp(17px, 2vw, 21px); color: var(--text-2); max-width: 560px; margin: 22px auto 0; }
+  footer { text-align: center; color: var(--gray); font-size: 12px; padding: 24px 22px 32px; border-top: 1px solid var(--line); }
 
-  /* ---------- sections ---------- */
-  .section { padding-top: 120px; padding-bottom: 140px; }
-  .section-head { text-align: center; max-width: 780px; margin: 0 auto 64px; }
-  h2 { font-size: clamp(38px, 6vw, 72px); line-height: 1.05; }
-  .section-head p { font-size: clamp(17px, 2.1vw, 23px); line-height: 1.3; color: var(--text-2); margin-top: 18px; letter-spacing: -0.02em; }
-
-  .grid { display: grid; gap: 20px; }
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
-  .grid-2 { grid-template-columns: repeat(2, 1fr); }
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-  .card {
-    position: relative; background: var(--card); border-radius: 28px; padding: 40px 36px; overflow: hidden;
-    transition: transform 0.6s var(--ease), background 0.35s var(--ease);
-  }
-  .card:hover { transform: translateY(-4px); background: var(--card-hover); }
-  .card .icon {
-    width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 26px;
-    background: rgba(255, 255, 255, 0.08); color: var(--text);
-  }
-  .card .icon svg { width: 26px; height: 26px; }
-  .card h3 { font-size: 24px; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 10px; }
-  .card p { color: var(--text-2); font-size: 16px; line-height: 1.45; }
-  .card .link { display: inline-block; margin-top: 18px; font-size: 16px; }
-
-  /* home tiles */
-  .tile { --tint: 191, 90, 242; text-align: left; display: flex; flex-direction: column; min-height: 300px; padding: 40px 36px; }
-  .tile::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.9;
-    background: radial-gradient(520px circle at 100% 0%, rgba(var(--tint), 0.28), transparent 60%);
-    transition: opacity 0.5s var(--ease);
-  }
-  .tile:hover::before { opacity: 1; }
-  .tile > * { position: relative; }
-  .tile .kicker { font-size: 14px; font-weight: 600; color: var(--gray); letter-spacing: 0.01em; margin-bottom: 14px; }
-  .tile h3 { font-size: 30px; }
-  .tile p { flex: 1; }
-
-  /* team */
-  .avatar {
-    width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 26px;
-    font-size: 30px; font-weight: 600; letter-spacing: -0.02em; color: #fff;
-    background: linear-gradient(135deg, #ff375f, #bf5af2 55%, #0a84ff);
-  }
-  .avatar.ghost { background: rgba(255, 255, 255, 0.06); border: 1px dashed rgba(255, 255, 255, 0.22); color: var(--gray); font-size: 34px; font-weight: 300; }
-  .role { font-size: 14px; font-weight: 500; color: var(--gray); margin-bottom: 8px; letter-spacing: -0.01em; }
-  .role.open { color: var(--blue); }
-
-  /* careers */
-  .perks { margin-bottom: 96px; text-align: center; }
-  .perk h3 { font-size: 19px; letter-spacing: -0.02em; margin-bottom: 6px; }
-  .perk p { color: var(--text-2); font-size: 15px; line-height: 1.45; }
-  .perk-ico { width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); display: grid; place-items: center; margin: 0 auto 18px; }
-  .perk-ico svg { width: 20px; height: 20px; }
-  .roles { max-width: 880px; margin: 0 auto; }
-  .role-item { border-top: 1px solid var(--line); }
-  .role-item:last-of-type { border-bottom: 1px solid var(--line); }
-  .role-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 4px; }
-  .role-item summary::-webkit-details-marker { display: none; }
-  .role-item summary h3 { font-size: 22px; letter-spacing: -0.025em; }
-  .role-item summary .meta { color: var(--gray); font-size: 15px; margin-top: 4px; letter-spacing: -0.01em; }
-  .plus {
-    flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.22);
-    display: grid; place-items: center; color: var(--text); transition: transform 0.45s var(--ease), background 0.3s;
-  }
-  .plus svg { width: 12px; height: 12px; }
-  .role-item summary:hover .plus { background: rgba(255, 255, 255, 0.08); }
-  .role-item[open] .plus { transform: rotate(45deg); }
-  .role-body { padding: 0 4px 34px; max-width: 680px; color: var(--text-2); font-size: 16px; animation: rise 0.6s var(--ease); }
-  .role-body ul { margin: 16px 0 24px 20px; }
-  .role-body li { margin-bottom: 8px; }
-  .role-body li::marker { color: var(--gray); }
-  .pitch { text-align: center; margin-top: 96px; }
-  .pitch h3 { font-size: clamp(26px, 3.6vw, 40px); letter-spacing: -0.03em; margin-bottom: 12px; }
-  .pitch p { color: var(--text-2); max-width: 520px; margin: 0 auto 28px; font-size: 17px; }
-
-  /* contact */
-  .contact { text-align: center; padding-top: 150px; padding-bottom: 150px; position: relative; overflow: hidden; }
-  .contact .glow { top: 45%; width: 900px; height: 600px; opacity: 0.7; }
-  .contact > .wrap { position: relative; z-index: 1; }
-  .contact p { font-size: clamp(17px, 2.1vw, 23px); color: var(--text-2); max-width: 560px; margin: 18px auto 40px; }
-  .email { display: inline-block; font-size: clamp(24px, 4vw, 44px); font-weight: 600; letter-spacing: -0.03em; color: var(--blue); }
-  .email:hover { text-decoration: underline; }
-  .socials { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin-top: 56px; }
-  .socials a, .socials span { font-size: 15px; color: var(--text-2); letter-spacing: -0.01em; transition: color 0.2s; }
-  .socials a:hover { color: var(--text); }
-  .socials span { color: var(--gray); }
-  .socials small { color: var(--gray); font-size: 12px; margin-left: 6px; }
-
-  /* footer */
-  footer { border-top: 1px solid var(--line); padding: 26px 0 44px; color: var(--gray); font-size: 12px; letter-spacing: -0.01em; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 18px 32px; flex-wrap: wrap; }
-  footer nav.foot { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; display: flex; gap: 22px; flex-wrap: wrap; }
-  footer button, footer a { color: var(--gray); font-size: 12px; transition: color 0.2s; letter-spacing: -0.01em; }
-  footer button:hover, footer a:hover { color: var(--text); }
-
-  /* ---------- responsive ---------- */
-  @media (max-width: 1000px) {
-    .grid-4 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(2, 1fr); }
-  }
   @media (max-width: 734px) {
-    :root { --nav-h: 96px; --gutter: 20px; }
-    .nav-inner { flex-wrap: wrap; align-items: center; padding-top: 12px; row-gap: 8px; }
-    .nav-links { order: 3; flex-basis: 100%; gap: 26px; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-    .hero { padding-top: 96px; padding-bottom: 96px; }
-    .section { padding-top: 88px; padding-bottom: 104px; }
-    .section-head { margin-bottom: 44px; }
-    .card { padding: 32px 28px; border-radius: 24px; }
-    .tile { min-height: 0; }
-    .perks { margin-bottom: 64px; }
-    .role-item summary { padding: 22px 0; }
-    .role-item summary h3 { font-size: 19px; }
-    .contact { padding-top: 104px; padding-bottom: 104px; }
-    .socials { gap: 24px; margin-top: 44px; }
-    footer .wrap { flex-direction: column; }
+    :root { --nav-h: 96px; }
+    .nav-inner { flex-wrap: wrap; padding-top: 12px; row-gap: 8px; }
+    .tabs { order: 3; flex-basis: 100%; gap: 26px; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .panel { padding: 56px 20px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
-    .active .reveal { opacity: 1 !important; transform: none !important; }
+    .active .content > * { opacity: 1 !important; transform: none !important; }
   }
 </style>
 </head>
 <body>
 
 <nav aria-label="Primary">
-  <div class="wrap nav-inner">
+  <div class="nav-inner">
     <a class="brand" href="#home" data-goto="home">YOY Labs</a>
-    <div class="nav-links" role="tablist" aria-label="Site sections">
+    <div class="tabs" role="tablist" aria-label="Site sections">
       <button role="tab" id="tab-home" aria-controls="panel-home" aria-selected="true" data-tab="home">Home</button>
       <button role="tab" id="tab-services" aria-controls="panel-services" aria-selected="false" tabindex="-1" data-tab="services">Services</button>
       <button role="tab" id="tab-team" aria-controls="panel-team" aria-selected="false" tabindex="-1" data-tab="team">Team</button>
       <button role="tab" id="tab-careers" aria-controls="panel-careers" aria-selected="false" tabindex="-1" data-tab="careers">Careers</button>
       <button role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1" data-tab="contact">Contact</button>
     </div>
-    <a class="nav-cta" href="#contact" data-goto="contact">Get in touch</a>
   </div>
 </nav>
 
 <main>
 
-  <!-- ================= HOME ================= -->
   <section class="panel active" id="panel-home" role="tabpanel" aria-labelledby="tab-home">
-    <div class="hero">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="wrap">
-        <h1 class="reveal">YOY Labs is<br><span class="grad">coming soon.</span></h1>
-        <p class="lede reveal">A technology lab building intelligent systems, software, and experiments at the edge of what's possible.</p>
-        <form class="waitlist reveal" id="waitlist" novalidate>
-          <input type="email" name="email" id="email" placeholder="Email address" autocomplete="email" required aria-label="Email address">
-          <button class="btn" type="submit">Notify me</button>
-          <p class="form-note" id="form-note">One email when we launch. Nothing else.</p>
-        </form>
-        <div class="hero-links reveal">
-          <a class="link" href="#services" data-goto="services">Explore our services</a>
-          <a class="link" href="#careers" data-goto="careers">See open roles</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrap statement">
-      <p>We operate like a research lab and ship like a startup.</p>
-      <p>Small teams, sharp tools, and progress that compounds year over year.</p>
-    </div>
-
-    <div class="wrap section" style="padding-top:0">
-      <div class="grid grid-3">
-        <button class="card tile" data-goto="services" style="--tint: 10, 132, 255">
-          <span class="kicker">Services</span>
-          <h3>What we build.</h3>
-          <p>From applied AI to product engineering and technical strategy.</p>
-          <span class="link">Learn more</span>
-        </button>
-        <button class="card tile" data-goto="team" style="--tint: 191, 90, 242">
-          <span class="kicker">Team</span>
-          <h3>Who's behind it.</h3>
-          <p>A small founding team, and a few seats still open.</p>
-          <span class="link">Meet the team</span>
-        </button>
-        <button class="card tile" data-goto="careers" style="--tint: 255, 55, 95">
-          <span class="kicker">Careers</span>
-          <h3>Build the lab with us.</h3>
-          <p>We're hiring ahead of launch. Remote-first, with founding equity.</p>
-          <span class="link">See open roles</span>
-        </button>
-      </div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="content">
+      <h1>YOY Labs is<br><span class="grad">coming soon.</span></h1>
+      <p class="lede">A technology lab building intelligent systems.</p>
+      <form class="waitlist" id="waitlist" novalidate>
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" required aria-label="Email address">
+        <button class="btn" type="submit">Notify me</button>
+        <p class="form-note" id="form-note"></p>
+      </form>
     </div>
   </section>
 
-  <!-- ================= SERVICES ================= -->
   <section class="panel" id="panel-services" role="tabpanel" aria-labelledby="tab-services" hidden>
-    <div class="wrap section">
-      <div class="section-head reveal">
-        <h2>What we build.</h2>
-        <p>Six disciplines, one obsession: turning ambitious ideas into systems that work.</p>
-      </div>
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="3"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
-          <h3>AI &amp; Intelligent Systems</h3>
-          <p>Applied machine learning, LLM-powered products, and autonomous agents, from proof of concept to production.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 16 9 5 9-5"/><path d="m3 12 9 5 9-5"/></svg></div>
-          <h3>Product Engineering</h3>
-          <p>Full-stack design and development of web and mobile products. Clean architecture, modern stacks, interfaces people love.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-6 11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1L14 9V3"/><path d="M7.5 15h9"/></svg></div>
-          <h3>R&amp;D Prototyping</h3>
-          <p>Rapid experimentation for ambitious ideas. Rough concepts become working prototypes in weeks, not quarters.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .4-9A7 7 0 0 0 4.3 12.5 3.5 3.5 0 0 0 6 19h11.5z"/></svg></div>
-          <h3>Cloud &amp; Infrastructure</h3>
-          <p>Scalable, observable, cost-efficient infrastructure. Pipelines, containerized deploys, and systems that stay up.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 15v-4M12.5 15V8M17 15v-2.5"/></svg></div>
-          <h3>Data &amp; Analytics</h3>
-          <p>Pipelines, dashboards, and decision tooling that turn raw data into signal, so every iteration is smarter than the last.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8"/></svg></div>
-          <h3>Technical Strategy</h3>
-          <p>Architecture reviews, technology roadmaps, and hands-on advisory for teams building at the frontier.</p>
-        </div>
-      </div>
+    <div class="content">
+      <h2>What we do.</h2>
+      <ul class="list">
+        <li>AI &amp; intelligent systems</li>
+        <li>Product engineering</li>
+        <li>R&amp;D prototyping</li>
+        <li>Technical strategy</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ================= TEAM ================= -->
   <section class="panel" id="panel-team" role="tabpanel" aria-labelledby="tab-team" hidden>
-    <div class="wrap section">
-      <div class="section-head reveal">
-        <h2>Small team.<br>Big ambitions.</h2>
-        <p>YOY Labs is being assembled right now, and a few seats are still open for people who want to build the lab, not just work at one.</p>
-      </div>
-      <div class="grid grid-4">
-        <div class="card reveal">
-          <div class="avatar">XL</div>
-          <div class="role">Founder</div>
-          <h3>Xing Liu</h3>
-          <p>Builds intelligent systems end to end, and believes the best way to predict the future is to prototype it.</p>
-          <a class="link" href="https://github.com/xingliu14" target="_blank" rel="noopener">GitHub</a>
-        </div>
-        <div class="card reveal">
-          <div class="avatar ghost">+</div>
-          <div class="role open">Open role</div>
-          <h3>Founding Engineer</h3>
-          <p>Own systems from first commit to production. Full-stack, pragmatic, allergic to slow.</p>
-          <a class="link" href="#careers" data-goto="careers">View role</a>
-        </div>
-        <div class="card reveal">
-          <div class="avatar ghost">+</div>
-          <div class="role open">Open role</div>
-          <h3>AI / ML Engineer</h3>
-          <p>Ship LLM-powered products with real evaluation behind them. Agents, retrieval, fine-tuning.</p>
-          <a class="link" href="#careers" data-goto="careers">View role</a>
-        </div>
-        <div class="card reveal">
-          <div class="avatar ghost">+</div>
-          <div class="role open">Open role</div>
-          <h3>Product Designer</h3>
-          <p>Make hard technology feel obvious. Systems thinking, taste, and a love of shipping.</p>
-          <a class="link" href="#careers" data-goto="careers">View role</a>
-        </div>
-      </div>
+    <div class="content">
+      <h2>The team.</h2>
+      <p class="lede">Xing Liu, Founder.<br>More to come.</p>
     </div>
   </section>
 
-  <!-- ================= CAREERS ================= -->
   <section class="panel" id="panel-careers" role="tabpanel" aria-labelledby="tab-careers" hidden>
-    <div class="wrap section">
-      <div class="section-head reveal">
-        <h2>Build the lab with us.</h2>
-        <p>We're hiring ahead of launch. Early people shape everything: the stack, the culture, and what we choose to build first.</p>
-      </div>
-
-      <div class="grid grid-4 perks reveal">
-        <div class="perk"><div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div><h3>Remote-first</h3><p>Work from anywhere. We overlap a few hours, then go deep.</p></div>
-        <div class="perk"><div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M16.5 7.5c0-1.7-2-3-4.5-3s-4.5 1.3-4.5 3 2 3 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3"/></svg></div><h3>Founding equity</h3><p>Meaningful ownership for everyone who joins before launch.</p></div>
-        <div class="perk"><div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><h3>Ship weekly</h3><p>Small teams, sharp tools, real users. No six-month roadmaps.</p></div>
-        <div class="perk"><div class="perk-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2.5"/><path d="M8 20h8M12 16v4"/></svg></div><h3>Your setup</h3><p>Pick your machine. We'd rather you never wait on a build.</p></div>
-      </div>
-
-      <div class="roles reveal">
-        <details class="role-item">
-          <summary>
-            <div><h3>Founding Full-Stack Engineer</h3><div class="meta">Engineering · Remote · Full-time</div></div>
-            <span class="plus"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10M1 6h10"/></svg></span>
-          </summary>
-          <div class="role-body">
-            <p>One of the first engineers at YOY Labs, owning products from first sketch to production deploy.</p>
-            <ul>
-              <li>Design and ship full-stack features across web and API layers</li>
-              <li>Set the engineering bar: testing, CI/CD, observability, code review</li>
-              <li>Prototype fast, then harden what works</li>
-            </ul>
-            <a class="btn secondary" href="mailto:careers@yoylabs.com?subject=Application%3A%20Founding%20Full-Stack%20Engineer">Apply</a>
-          </div>
-        </details>
-        <details class="role-item">
-          <summary>
-            <div><h3>AI / ML Engineer</h3><div class="meta">Engineering · Remote · Full-time</div></div>
-            <span class="plus"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10M1 6h10"/></svg></span>
-          </summary>
-          <div class="role-body">
-            <p>Build LLM-powered products and agents that hold up in production, with evaluation baked in from day one.</p>
-            <ul>
-              <li>Design agentic systems, retrieval pipelines, and tool-use workflows</li>
-              <li>Own evals, guardrails, and cost and latency trade-offs</li>
-              <li>Stay current with frontier models and bring the useful parts to the team</li>
-            </ul>
-            <a class="btn secondary" href="mailto:careers@yoylabs.com?subject=Application%3A%20AI%20%2F%20ML%20Engineer">Apply</a>
-          </div>
-        </details>
-        <details class="role-item">
-          <summary>
-            <div><h3>Product Designer</h3><div class="meta">Design · Remote · Contract to full-time</div></div>
-            <span class="plus"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10M1 6h10"/></svg></span>
-          </summary>
-          <div class="role-body">
-            <p>Turn complex technology into interfaces that feel obvious. You'll define how YOY Labs products look, feel, and behave.</p>
-            <ul>
-              <li>Own product design end to end: research, flows, visual systems</li>
-              <li>Build and maintain a lean design system with engineering</li>
-              <li>Prototype in code when it's faster than a mockup</li>
-            </ul>
-            <a class="btn secondary" href="mailto:careers@yoylabs.com?subject=Application%3A%20Product%20Designer">Apply</a>
-          </div>
-        </details>
-        <details class="role-item">
-          <summary>
-            <div><h3>Research Intern</h3><div class="meta">Research · Remote · Internship</div></div>
-            <span class="plus"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10M1 6h10"/></svg></span>
-          </summary>
-          <div class="role-body">
-            <p>Run real experiments with real stakes. Scope a question, build the prototype, and present what you learned.</p>
-            <ul>
-              <li>Explore emerging techniques in AI and systems</li>
-              <li>Ship a working prototype by the end of the term</li>
-              <li>Write it up so the rest of the lab can build on it</li>
-            </ul>
-            <a class="btn secondary" href="mailto:careers@yoylabs.com?subject=Application%3A%20Research%20Intern">Apply</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="pitch reveal">
-        <h3>Don't see your role?</h3>
-        <p>Tell us what you'd build here and why it matters. We hire for trajectory, not job titles.</p>
-        <a class="btn" href="mailto:careers@yoylabs.com?subject=Pitch%3A%20what%20I%27d%20build%20at%20YOY%20Labs">Pitch us</a>
-      </div>
+    <div class="content">
+      <h2>Join us.</h2>
+      <p class="lede">We're hiring ahead of launch.</p>
+      <a class="link" href="mailto:careers@yoylabs.com">careers@yoylabs.com</a>
     </div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
   <section class="panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
-    <div class="contact">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="wrap">
-        <h2 class="reveal">Say hello.</h2>
-        <p class="reveal">Have an ambitious idea, a hard problem, or just curiosity about what we're working on? We'd love to hear from you.</p>
-        <a class="email reveal" href="mailto:hello@yoylabs.com">hello@yoylabs.com</a>
-        <div class="socials reveal">
-          <a href="https://github.com/xingliu14" target="_blank" rel="noopener">GitHub</a>
-          <span>X<small>soon</small></span>
-          <span>LinkedIn<small>soon</small></span>
-        </div>
-      </div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="content">
+      <h2>Say hello.</h2>
+      <a class="link" href="mailto:hello@yoylabs.com">hello@yoylabs.com</a>
     </div>
   </section>
 
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>Copyright © 2026 YOY Labs. All rights reserved.</span>
-    <nav class="foot" aria-label="Footer">
-      <button data-goto="services">Services</button>
-      <button data-goto="team">Team</button>
-      <button data-goto="careers">Careers</button>
-      <button data-goto="contact">Contact</button>
-      <a href="https://github.com/xingliu14/YOY-Labs-Website" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-  </div>
-</footer>
+<footer>© 2026 YOY Labs</footer>
 
 <script>
-  // Optional: paste a Formspree (or similar) endpoint here to collect waitlist emails.
-  // Leave empty to fall back to opening the visitor's email client.
+  // Optional: paste a Formspree (or similar) endpoint here to collect emails.
+  // Leave empty to open the visitor's email app instead.
   const FORM_ENDPOINT = "";
   const CONTACT_EMAIL = "hello@yoylabs.com";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // ---------- tabs + hash routing ----------
   const TABS = ["home", "services", "team", "careers", "contact"];
-  const tablist = document.querySelector(".nav-links");
+  const tablist = document.querySelector(".tabs");
   const tabButtons = [...tablist.querySelectorAll('[role="tab"]')];
   let current = null;
 
@@ -551,20 +216,20 @@
     const h = location.hash.replace("#", "").toLowerCase();
     return TABS.includes(h) ? h : "home";
   }
-  function centerTab(btn) {
-    if (tablist.scrollWidth <= tablist.clientWidth) return;
-    const left = btn.offsetLeft - (tablist.clientWidth - btn.offsetWidth) / 2;
-    tablist.scrollTo({ left: Math.max(0, left), behavior: reduceMotion ? "auto" : "smooth" });
-  }
   function show(tab, { updateHash = true, focus = false } = {}) {
     if (!TABS.includes(tab)) tab = "home";
-    if (tab === current) { window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }); return; }
+    if (tab === current) return;
     current = tab;
     tabButtons.forEach(b => {
       const on = b.dataset.tab === tab;
       b.setAttribute("aria-selected", on);
       b.tabIndex = on ? 0 : -1;
-      if (on) { centerTab(b); if (focus) b.focus(); }
+      if (on) {
+        if (tablist.scrollWidth > tablist.clientWidth) {
+          tablist.scrollTo({ left: Math.max(0, b.offsetLeft - (tablist.clientWidth - b.offsetWidth) / 2), behavior: reduceMotion ? "auto" : "smooth" });
+        }
+        if (focus) b.focus();
+      }
     });
     document.querySelectorAll(".panel").forEach(p => {
       const on = p.id === "panel-" + tab;
@@ -575,7 +240,7 @@
       const url = tab === "home" ? location.pathname + location.search : "#" + tab;
       try { history.pushState(null, "", url); } catch (_) { if (tab !== "home") location.hash = tab; }
     }
-    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    window.scrollTo(0, 0);
     document.title = tab === "home" ? "YOY Labs — Coming Soon" : `YOY Labs — ${tab[0].toUpperCase() + tab.slice(1)}`;
   }
   tabButtons.forEach(b => b.addEventListener("click", () => show(b.dataset.tab)));
@@ -583,8 +248,6 @@
     const i = TABS.indexOf(current);
     if (e.key === "ArrowRight") { e.preventDefault(); show(TABS[(i + 1) % TABS.length], { focus: true }); }
     if (e.key === "ArrowLeft") { e.preventDefault(); show(TABS[(i - 1 + TABS.length) % TABS.length], { focus: true }); }
-    if (e.key === "Home") { e.preventDefault(); show(TABS[0], { focus: true }); }
-    if (e.key === "End") { e.preventDefault(); show(TABS[TABS.length - 1], { focus: true }); }
   });
   document.addEventListener("click", e => {
     const el = e.target.closest("[data-goto]");
@@ -595,7 +258,6 @@
   window.addEventListener("popstate", () => show(tabFromHash(), { updateHash: false }));
   window.addEventListener("hashchange", () => show(tabFromHash(), { updateHash: false }));
 
-  // ---------- waitlist form ----------
   const form = document.getElementById("waitlist");
   const note = document.getElementById("form-note");
   form.addEventListener("submit", async e => {
@@ -606,24 +268,23 @@
     }
     if (!FORM_ENDPOINT) {
       location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("YOY Labs launch list")}&body=${encodeURIComponent("Please add me to the launch list: " + email)}`;
-      note.textContent = "Opening your email app. Send it and you're on the list."; note.className = "form-note ok";
+      note.textContent = "Opening your email app."; note.className = "form-note ok";
       return;
     }
     const btn = form.querySelector("button");
     btn.disabled = true; btn.textContent = "Sending…";
     try {
-      const res = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email, source: "yoylabs-coming-soon" }) });
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email }) });
       if (!res.ok) throw new Error(res.statusText);
-      note.textContent = "You're on the list. See you at launch."; note.className = "form-note ok";
+      note.textContent = "You're on the list."; note.className = "form-note ok";
       form.reset();
     } catch (err) {
-      note.textContent = "Something went wrong. Email us at " + CONTACT_EMAIL; note.className = "form-note err";
+      note.textContent = "Something went wrong. Email " + CONTACT_EMAIL; note.className = "form-note err";
     } finally {
       btn.disabled = false; btn.textContent = "Notify me";
     }
   });
 
-  // ---------- boot ----------
   show(tabFromHash(), { updateHash: false });
 </script>
 </body>

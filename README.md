@@ -10,13 +10,13 @@ A single `index.html` with five client-side tabs, deep-linkable via the URL hash
 
 | Tab | URL | Contents |
 |---|---|---|
-| Home | `/` | "YOY Labs is coming soon" hero, waitlist form, three section tiles |
-| Services | `/#services` | Six service lines |
-| Team | `/#team` | Founder card plus open roles |
-| Careers | `/#careers` | Four open roles, perks, "pitch us" |
-| Contact | `/#contact` | Email and socials |
+| Home | `/` | "YOY Labs is coming soon", one line, email notify form |
+| Services | `/#services` | Four service names |
+| Team | `/#team` | Founder |
+| Careers | `/#careers` | One line and the careers email |
+| Contact | `/#contact` | The contact email |
 
-Apple-style dark design: system font (SF on Apple devices, Inter elsewhere), one gradient headline, frosted nav, pill buttons, rounded cards. Arrow keys move within the tab bar. Respects `prefers-reduced-motion`.
+Minimal Apple-style dark design: one centered screen per tab, system font (SF on Apple devices, Inter elsewhere), one gradient headline, frosted nav, pill button. Arrow keys move within the tab bar. Respects `prefers-reduced-motion`.
 
 Files:
 
@@ -26,12 +26,10 @@ Files:
 
 ## Editing content
 
-Everything is plain HTML in `index.html`. Search for the section comments `<!-- ===== TEAM ===== -->` etc.
+Everything is plain HTML in `index.html`; each tab is one short `<section>`.
 
-- **Team members:** copy a `.card` block in the Team section. Initials go in `.avatar`.
-- **Open roles:** copy a `<details class="role-item">` block. Update the `mailto:` subject.
 - **Emails:** `hello@yoylabs.com` and `careers@yoylabs.com` are placeholders. Search and replace.
-- **Waitlist form:** set `FORM_ENDPOINT` at the top of the `<script>` (see "Free add-ons" below). Empty means the form opens the visitor's email client instead.
+- **Notify form:** set `FORM_ENDPOINT` at the top of the `<script>` (see "Free add-ons" below). Empty means the form opens the visitor's email app instead.
 
 ## Local development
 
