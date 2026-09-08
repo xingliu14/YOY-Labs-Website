@@ -2,7 +2,7 @@
 
 "Coming soon" site for **YOY Labs**, a technology lab building intelligent systems, software, and experiments at the edge of what's possible.
 
-**Live site (once Pages is enabled):** https://xingliu14.github.io/YOY-Labs-Website/
+**Live site:** https://xingliu14.github.io/YOY-Labs-Website/
 
 ## What's in it
 
@@ -10,13 +10,13 @@ A single `index.html` with five client-side tabs, deep-linkable via the URL hash
 
 | Tab | URL | Contents |
 |---|---|---|
-| Home | `/` | "YOY Labs is coming soon" hero, waitlist form, launch-sequence console |
+| Home | `/` | "YOY Labs is coming soon" hero, waitlist form, three section tiles |
 | Services | `/#services` | Six service lines |
-| Team | `/#team` | Founder card plus open seats |
+| Team | `/#team` | Founder card plus open roles |
 | Careers | `/#careers` | Four open roles, perks, "pitch us" |
 | Contact | `/#contact` | Email and socials |
 
-Keyboard: `1`–`5` switch tabs, arrow keys move within the tab bar. Respects `prefers-reduced-motion`.
+Apple-style dark design: system font (SF on Apple devices, Inter elsewhere), one gradient headline, frosted nav, pill buttons, rounded cards. Arrow keys move within the tab bar. Respects `prefers-reduced-motion`.
 
 Files:
 
@@ -28,7 +28,7 @@ Files:
 
 Everything is plain HTML in `index.html`. Search for the section comments `<!-- ===== TEAM ===== -->` etc.
 
-- **Team members:** copy a `.card.member` block. Initials go in `.avatar span`.
+- **Team members:** copy a `.card` block in the Team section. Initials go in `.avatar`.
 - **Open roles:** copy a `<details class="role-item">` block. Update the `mailto:` subject.
 - **Emails:** `hello@yoylabs.com` and `careers@yoylabs.com` are placeholders. Search and replace.
 - **Waitlist form:** set `FORM_ENDPOINT` at the top of the `<script>` (see "Free add-ons" below). Empty means the form opens the visitor's email client instead.
@@ -44,12 +44,14 @@ Opening `index.html` directly from disk also works.
 
 ## Serving it for free
 
-### Current state (checked 2026-09-07)
+### Current state (2026-09-07)
 
-- The repo is **private**. GitHub Pages on a private repo requires GitHub Pro or Team. On the Free plan, Pages only works on **public** repos.
-- Pages is **not enabled yet**. The live URL returns 404.
+- Repo is **public** and **GitHub Pages is enabled**, deploying from `main` (root). Live at the URL above with HTTPS.
+- Every `git push` to `main` redeploys in about a minute. Nothing else to do.
 
-### Recommended: GitHub Pages ($0)
+The steps below are kept for reference (e.g. if the repo is ever re-created).
+
+### GitHub Pages setup ($0)
 
 The site is static and already lives on GitHub, so this is the shortest path.
 
