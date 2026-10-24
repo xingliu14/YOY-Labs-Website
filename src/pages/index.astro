@@ -1,0 +1,164 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE_NAME, CONTACT_EMAIL, CAREERS_EMAIL } from "../consts";
+---
+
+<Base
+  title={`${SITE_NAME} — Coming Soon`}
+  description="YOY Labs is coming soon. A technology lab building intelligent systems."
+  ogDescription="A technology lab building intelligent systems. Launching soon."
+>
+  <nav aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href="#home" data-goto="home">{SITE_NAME}</a>
+      <div class="tabs" role="tablist" aria-label="Site sections">
+        <button role="tab" id="tab-home" aria-controls="panel-home" aria-selected="true" data-tab="home">Home</button>
+        <button role="tab" id="tab-services" aria-controls="panel-services" aria-selected="false" tabindex="-1" data-tab="services">Services</button>
+        <button role="tab" id="tab-team" aria-controls="panel-team" aria-selected="false" tabindex="-1" data-tab="team">Team</button>
+        <button role="tab" id="tab-careers" aria-controls="panel-careers" aria-selected="false" tabindex="-1" data-tab="careers">Careers</button>
+        <button role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1" data-tab="contact">Contact</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="panel active" id="panel-home" role="tabpanel" aria-labelledby="tab-home">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="content">
+        <h1>YOY Labs is<br /><span class="grad">coming soon.</span></h1>
+        <p class="lede">A technology lab building intelligent systems.</p>
+        <form class="waitlist" id="waitlist" novalidate>
+          <input type="email" name="email" placeholder="Email address" autocomplete="email" required aria-label="Email address" />
+          <button class="btn" type="submit">Notify me</button>
+          <p class="form-note" id="form-note"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-services" role="tabpanel" aria-labelledby="tab-services" hidden>
+      <div class="content">
+        <h2>What we do.</h2>
+        <ul class="list">
+          <li>AI &amp; intelligent systems</li>
+          <li>Product engineering</li>
+          <li>R&amp;D prototyping</li>
+          <li>Technical strategy</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-team" role="tabpanel" aria-labelledby="tab-team" hidden>
+      <div class="content">
+        <h2>The team.</h2>
+        <p class="lede">Xing Liu, Founder.<br />More to come.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-careers" role="tabpanel" aria-labelledby="tab-careers" hidden>
+      <div class="content">
+        <h2>Join us.</h2>
+        <p class="lede">We're hiring ahead of launch.</p>
+        <a class="link" href={`mailto:${CAREERS_EMAIL}`}>{CAREERS_EMAIL}</a>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+      <div class="glow" aria-hidden="true"></div>
+      <div class="content">
+        <h2>Say hello.</h2>
+        <a class="link" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© {new Date().getFullYear()} {SITE_NAME}</footer>
+</Base>
+
+<script>
+  import { CONTACT_EMAIL, FORM_ENDPOINT } from "../consts";
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const TABS = ["home", "services", "team", "careers", "contact"];
+  const tablist = document.querySelector<HTMLElement>(".tabs")!;
+  const tabButtons = [...tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+  let current: string | null = null;
+
+  function tabFromHash() {
+    const h = location.hash.replace("#", "").toLowerCase();
+    return TABS.includes(h) ? h : "home";
+  }
+  function show(tab: string, { updateHash = true, focus = false } = {}) {
+    if (!TABS.includes(tab)) tab = "home";
+    if (tab === current) return;
+    current = tab;
+    tabButtons.forEach(b => {
+      const on = b.dataset.tab === tab;
+      b.setAttribute("aria-selected", String(on));
+      b.tabIndex = on ? 0 : -1;
+      if (on) {
+        if (tablist.scrollWidth > tablist.clientWidth) {
+          tablist.scrollTo({ left: Math.max(0, b.offsetLeft - (tablist.clientWidth - b.offsetWidth) / 2), behavior: reduceMotion ? "auto" : "smooth" });
+        }
+        if (focus) b.focus();
+      }
+    });
+    document.querySelectorAll<HTMLElement>(".panel").forEach(p => {
+      const on = p.id === "panel-" + tab;
+      p.hidden = !on;
+      p.classList.toggle("active", on);
+    });
+    if (updateHash) {
+      const url = tab === "home" ? location.pathname + location.search : "#" + tab;
+      try { history.pushState(null, "", url); } catch (_) { if (tab !== "home") location.hash = tab; }
+    }
+    window.scrollTo(0, 0);
+    document.title = tab === "home" ? "YOY Labs — Coming Soon" : `YOY Labs — ${tab[0].toUpperCase() + tab.slice(1)}`;
+  }
+  tabButtons.forEach(b => b.addEventListener("click", () => show(b.dataset.tab!)));
+  tablist.addEventListener("keydown", e => {
+    const i = TABS.indexOf(current!);
+    if (e.key === "ArrowRight") { e.preventDefault(); show(TABS[(i + 1) % TABS.length], { focus: true }); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); show(TABS[(i - 1 + TABS.length) % TABS.length], { focus: true }); }
+  });
+  document.addEventListener("click", e => {
+    const el = (e.target as Element).closest<HTMLElement>("[data-goto]");
+    if (!el) return;
+    e.preventDefault();
+    show(el.dataset.goto!);
+  });
+  window.addEventListener("popstate", () => show(tabFromHash(), { updateHash: false }));
+  window.addEventListener("hashchange", () => show(tabFromHash(), { updateHash: false }));
+
+  const form = document.getElementById("waitlist") as HTMLFormElement;
+  const emailInput = form.elements.namedItem("email") as HTMLInputElement;
+  const note = document.getElementById("form-note")!;
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      note.textContent = "Please enter a valid email address."; note.className = "form-note err"; emailInput.focus(); return;
+    }
+    if (!FORM_ENDPOINT) {
+      location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("YOY Labs launch list")}&body=${encodeURIComponent("Please add me to the launch list: " + email)}`;
+      note.textContent = "Opening your email app."; note.className = "form-note ok";
+      return;
+    }
+    const btn = form.querySelector("button")!;
+    btn.disabled = true; btn.textContent = "Sending…";
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ email }) });
+      if (!res.ok) throw new Error(res.statusText);
+      note.textContent = "You're on the list."; note.className = "form-note ok";
+      form.reset();
+    } catch (err) {
+      note.textContent = "Something went wrong. Email " + CONTACT_EMAIL; note.className = "form-note err";
+    } finally {
+      btn.disabled = false; btn.textContent = "Notify me";
+    }
+  });
+
+  show(tabFromHash(), { updateHash: false });
+</script>

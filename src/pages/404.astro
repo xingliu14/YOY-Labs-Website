@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE_NAME } from "../consts";
+
+const home = import.meta.env.BASE_URL;
+---
+
+<Base title={`${SITE_NAME} — Not Found`} description="Page not found." noindex>
+  <nav aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href={home}>{SITE_NAME}</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="panel active">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="content">
+        <h2>Page <span class="grad">not found.</span></h2>
+        <p class="lede">Taking you back to the home page.</p>
+        <a class="link" href={home}>Back to {SITE_NAME}</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© {new Date().getFullYear()} {SITE_NAME}</footer>
+</Base>
+
+<script>
+  setTimeout(() => location.replace(import.meta.env.BASE_URL), 2500);
+</script>
