@@ -57,15 +57,15 @@ Limits on the free tier: 1 GB site, 100 GB bandwidth per month. A coming-soon pa
 
 Register at Cloudflare Registrar (at-cost pricing, about $12/year for `.net`, free WHOIS privacy). Then:
 
-1. In `astro.config.mjs`, set `site: "https://yoylabs.net"` and `base: "/"`.
-2. Add `public/CNAME` containing just `yoylabs.net`.
-3. In Cloudflare DNS, add:
+1. Verify the domain for the GitHub account (account Settings → Pages → Add a domain, which asks for a TXT record in Cloudflare DNS), so no other GitHub user can point it at their site.
+2. In Cloudflare DNS, add:
    - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - `CNAME` record for `www` → `xingliu14.github.io`
    - Keep both **DNS only** (grey cloud) until GitHub has issued the certificate.
-4. Settings → Pages → Custom domain → `yoylabs.net` → tick **Enforce HTTPS** once the certificate is issued (a few minutes).
+3. Repo Settings → Pages → Custom domain → `yoylabs.net`; tick **Enforce HTTPS** once the certificate is issued (a few minutes).
+4. Straight after step 3, set `site: "https://yoylabs.net"` and `base: "/"` in `astro.config.mjs` and push. Until that deploy finishes, the domain serves the old build, whose asset paths still start with `/YOY-Labs-Website/`.
 
-Don't add `public/CNAME` before you own the domain; Pages will refuse to serve until DNS resolves.
+The domain lives in the Pages setting: GitHub Actions deployments ignore a `CNAME` file.
 
 ## Free add-ons
 
