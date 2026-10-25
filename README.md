@@ -2,7 +2,7 @@
 
 "Coming soon" site for **YOY Labs**, a technology lab building intelligent systems, software, and experiments at the edge of what's possible.
 
-**Live site:** https://xingliu14.github.io/YOY-Labs-Website/ (moving to `yoylabs.net` once the domain is registered)
+**Live site:** https://yoylabs.net
 
 ## What's in it
 
@@ -31,7 +31,7 @@ Files:
 ## Editing content
 
 - **Text:** each tab is one short `<section>` in `src/pages/index.astro`.
-- **Emails:** `CONTACT_EMAIL` and `CAREERS_EMAIL` in `src/consts.ts`. They are still placeholders on `yoylabs.com`, which we do not own; switch them to `yoylabs.net` once its email routing works.
+- **Emails:** `CONTACT_EMAIL` and `CAREERS_EMAIL` in `src/consts.ts` (`hello@` and `careers@yoylabs.net`). Cloudflare Email Routing forwards them; a new address needs its own routing rule there.
 - **Notify form:** set `FORM_ENDPOINT` in `src/consts.ts` (see "Free add-ons" below). Empty means the form opens the visitor's email app instead.
 
 ## Local development
@@ -40,37 +40,30 @@ Requires Node `>=22.23.4` (`.node-version` pins 24). With [fnm](https://github.c
 
 ```sh
 npm install
-npm run dev       # → http://localhost:4321/YOY-Labs-Website/
+npm run dev       # → http://localhost:4321/
 npm run build     # type-check, then build into dist/
 npm run preview   # serve dist/ locally
 ```
 
 ## Deploying
 
-GitHub Actions builds the site and publishes `dist/` to GitHub Pages on every push to `main`.
-
-**One-time switch (required before merging the Astro migration):** Settings → Pages → Build and deployment → Source: **GitHub Actions**. The old "Deploy from a branch" setting would serve the raw repo, which no longer has an `index.html` at the root.
+GitHub Actions builds the site and publishes `dist/` to GitHub Pages on every push to `main` (Settings → Pages → Source: GitHub Actions).
 
 Limits on the free tier: 1 GB site, 100 GB bandwidth per month. A coming-soon page will not get near either.
 
-## Custom domain: `yoylabs.net`
+## Domain: `yoylabs.net`
 
-Register at Cloudflare Registrar (at-cost pricing, about $12/year for `.net`, free WHOIS privacy). Then:
+Registered at Cloudflare Registrar, with DNS and email at Cloudflare:
 
-1. Verify the domain for the GitHub account (account Settings → Pages → Add a domain, which asks for a TXT record in Cloudflare DNS), so no other GitHub user can point it at their site.
-2. In Cloudflare DNS, add:
-   - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` record for `www` → `xingliu14.github.io`
-   - Keep both **DNS only** (grey cloud) until GitHub has issued the certificate.
-3. Repo Settings → Pages → Custom domain → `yoylabs.net`; tick **Enforce HTTPS** once the certificate is issued (a few minutes).
-4. Straight after step 3, set `site: "https://yoylabs.net"` and `base: "/"` in `astro.config.mjs` and push. Until that deploy finishes, the domain serves the old build, whose asset paths still start with `/YOY-Labs-Website/`.
+- `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and `AAAA` → `2606:50c0:8000::153` … `2606:50c0:8003::153`; `CNAME` for `www` → `xingliu14.github.io`. All **DNS only** (grey cloud), so GitHub can issue the certificate.
+- A `TXT` record `_github-pages-challenge-xingliu14` verifies the domain for the GitHub account, so no other account can claim it. Keep it.
+- Email Routing adds its own `MX` and `TXT` records and forwards `hello@` and `careers@`.
 
-The domain lives in the Pages setting: GitHub Actions deployments ignore a `CNAME` file.
+The domain itself is set under Settings → Pages → Custom domain, with **Enforce HTTPS** on. GitHub Actions deployments ignore a `CNAME` file.
 
 ## Free add-ons
 
 - **Waitlist emails:** [Formspree](https://formspree.io) free tier gives 50 submissions/month. Create a form, paste its endpoint into `FORM_ENDPOINT`. [Web3Forms](https://web3forms.com) is a free alternative with no monthly cap.
-- **Email at your domain:** Cloudflare Email Routing forwards `hello@yoylabs.net` to any inbox for free.
 - **Analytics:** Cloudflare Web Analytics or [GoatCounter](https://www.goatcounter.com), both free, cookie-free, and one script tag.
 - **Uptime alerts:** [UptimeRobot](https://uptimerobot.com) free tier checks the URL every 5 minutes.
 
