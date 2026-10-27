@@ -1,6 +1,7 @@
 export const SITE_NAME = "YOY Labs";
 
-// Cloudflare Email Routing forwards both to the founder's inbox.
+// Meant to be forwarded to the founder's inbox by Cloudflare Email Routing. Until the domain's
+// routing rules exist, mail to both bounces (see README.md).
 export const CONTACT_EMAIL = "hello@yoylabs.net";
 export const CAREERS_EMAIL = "careers@yoylabs.net";
 

@@ -32,7 +32,7 @@ Files:
 ## Editing content
 
 - **Text:** each tab is one short `<section>` in `src/pages/index.astro`.
-- **Emails:** `CONTACT_EMAIL` and `CAREERS_EMAIL` in `src/consts.ts` (`hello@` and `careers@yoylabs.net`). Cloudflare Email Routing forwards them; a new address needs its own routing rule there.
+- **Emails:** `CONTACT_EMAIL` and `CAREERS_EMAIL` in `src/consts.ts` (`hello@` and `careers@yoylabs.net`). The domain is onboarded to Cloudflare Email Routing, but neither address has a routing rule yet, so mail to them bounces. Each address needs its own rule (Email Routing → Routing rules → Create rule, forwarding to a verified destination).
 - **Notify form:** set `FORM_ENDPOINT` in `src/consts.ts` (see "Free add-ons" below). Empty means the form opens the visitor's email app instead.
 
 ## Local development
@@ -58,7 +58,7 @@ Registered at Cloudflare Registrar, with DNS and email at Cloudflare:
 
 - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and `AAAA` → `2606:50c0:8000::153` … `2606:50c0:8003::153`; `CNAME` for `www` → `xingliu14.github.io`. All **DNS only** (grey cloud), so GitHub can issue the certificate.
 - A `TXT` record `_github-pages-challenge-xingliu14` verifies the domain for the GitHub account, so no other account can claim it. Keep it.
-- Email Routing adds its own `MX` and `TXT` records and forwards `hello@` and `careers@`.
+- Email Routing added its own `MX` and `TXT` records. Forwarding `hello@` and `careers@` still needs the two routing rules above.
 
 The domain itself is set under Settings → Pages → Custom domain, with **Enforce HTTPS** on. GitHub Actions deployments ignore a `CNAME` file.
 
