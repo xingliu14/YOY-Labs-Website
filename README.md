@@ -25,7 +25,8 @@ Files:
 - `src/layouts/Base.astro` — `<head>` (meta, Open Graph, favicon, fonts) shared by every page.
 - `src/styles/global.css` — all styles.
 - `src/consts.ts` — site name, contact emails, waitlist form endpoint.
-- `astro.config.mjs` — `site` and `base` (the URL the site is served from).
+- `astro.config.mjs` — `site` (the URL the site is served from) and the sitemap integration, which writes `sitemap-index.xml` listing every page except the 404.
+- `public/robots.txt` — allows all crawlers and names the sitemap.
 - `.github/workflows/deploy.yml` — builds and deploys to GitHub Pages on every push to `main`.
 
 ## Editing content
